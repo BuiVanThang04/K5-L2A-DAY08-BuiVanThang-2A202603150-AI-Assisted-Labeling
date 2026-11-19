@@ -348,8 +348,11 @@ def pick_device(pref: str = "auto") -> str:
             return "cuda"
         if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
             return "mps"
-    except Exception:
-        pass
+    except Exception as exc:
+        raise RuntimeError(
+            "PyTorch initialization failed while selecting a device. "
+            "See the original exception above; restart Python after fixing it."
+        ) from exc
     return "cpu"
 
 
