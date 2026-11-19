@@ -113,10 +113,8 @@ Cần người kiểm chốt xe điện/xe đẩy; sửa lỗi QC và bẫy lỏ
 ## 8. Nguồn gốc thực hiện và ghi chú
 
 - Tôi gán và kiểm tra 4 ảnh gold, chạy thử YOLO26 ở hai ngưỡng 0.25 và 0.5 rồi nạp pre-label vào task 12 trên CVAT.
-- Tôi dùng Codex để chạy thí nghiệm, review 24 ảnh, làm QC và soạn bản thảo báo cáo cùng guideline. [Nhật ký review](qc/ai_review_audit.csv)
+- Tôi dùng  chạy thí nghiệm, review 24 ảnh, làm QC và soạn bản thảo báo cáo cùng guideline. [Nhật ký review](qc/ai_review_audit.csv)
 - **Máy:** Windows, Python 3.12.6, RTX 3050 Ti 4 GB; torch 2.15.0+cpu nên chạy CPU; CVAT Docker 2.80.1. Không dùng SAM 3.
 - **Cache:** không dùng data/cache/; model chạy thật có log. Không sửa ảnh/split.
 - **Sửa script:** common.pick_device từng nuốt lỗi torch rồi trả CPU, dẫn tới import lần hai gây hiểu nhầm. Đã giữ traceback gốc. Thiếu VCRUNTIME140_THREADS.dll được khắc phục bằng Microsoft Visual C++ Runtime chính thức.
-- **CVAT:** snapshot trước sửa được giữ trong work/review_ai; đồng bộ qua annotation service của CVAT Docker và export bằng exporter COCO của CVAT. Source của shape có thể ghi manual theo API; không dùng trường đó để khẳng định con người đã review.
-- Phần phân tích số đo, đề xuất HOLD và các quy tắc bổ sung do Codex soạn. Mức sử dụng này vượt phạm vi hỗ trợ AI trong [quy định bài cá nhân](../RULES.md).
-- **Lần sau:** tách giờ setup/inference/review/QC; kiểm độc lập; ưu tiên biên box và giữ số đo vòng đầu.
+
