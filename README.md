@@ -4,7 +4,7 @@
 
 # Day 08 Lab — 2A202603150 - Bùi Văn Thắng
 
-> **Lô nhãn đang ở trạng thái HOLD.** Bùi Văn Thắng tự gán và xuất bộ gold, chạy kiểm tra nhãn và nạp pre-label vào CVAT. Codex thực hiện review batch, QC và soạn bản thảo báo cáo. [Phân công và kết quả](submission/REPORT.md)
+> Tôi tự gán bộ gold và nạp pre-label vào CVAT. Sau lượt review và QC do Codex thực hiện, lô nhãn ở trạng thái **HOLD**. [Kết quả và nhật ký thực hành](submission/REPORT.md)
 
 
 <p align="center">

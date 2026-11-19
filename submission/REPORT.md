@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603150 - Bùi Văn Thắng
 
-> Bùi Văn Thắng tự gán và xuất bộ gold, chạy kiểm tra nhãn và nạp pre-label cho batch vào CVAT. Codex thực hiện lượt review batch, QC và soạn bản phân tích. Quyết định đề xuất cho lô nhãn là **HOLD**.
+> Tôi gán bộ gold và chuẩn bị task review trên CVAT. Codex thực hiện lượt review batch và QC. Kết quả của lô nhãn là **HOLD**.
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -48,15 +48,15 @@ Bắt **9/12 = 75.0%**, dưới yêu cầu ít nhất 10/12. wrong_class 3/3, ex
 
 Key chỉ được script đọc sau khi batch_reviewed.json đã được export/lưu. Không sửa pre-label, key hoặc số đo lượt đầu sau khi biết đáp án.
 
-Đánh giá AI: accepted 82% không chứng minh review tốt; bước kiểm sát bốn cạnh chưa chặt. Đây là lỗi của lượt AI review, không phải phép đo thiên kiến của học viên. Không kết luận học viên đã/không đã làm đúng checklist từ số này.
+Codex giữ nguyên 268/327 box nhưng bỏ lọt cả 3 bẫy có box quá rộng. Lượt review này cho thấy cần kiểm tra từng cạnh, kể cả khi box đã đúng lớp.
 
 ## 4. Máy có đáng dùng không?
 
-Nguồn time_log.csv: gold_manual **22 phút/4 ảnh = 5.50 phút/ảnh**, do học viên cung cấp. batch_review là **6.87 phút/24 ảnh = 0.286 phút/ảnh** của đoạn AI review được đo, gồm đồng bộ CVAT, **không gồm setup, lần xem 4 ảnh đầu và QC**. Đây không phải thời gian review của học viên. Khác người và phạm vi nên không tính phần trăm tiết kiệm từ hai dòng.
+Tôi mất **22 phút cho 4 ảnh gold**, trung bình **5,50 phút/ảnh**. Nhật ký cũng ghi **6,87 phút** cho một phần lượt Codex review 24 ảnh, gồm cả lúc đồng bộ CVAT. Khoảng đo này bỏ qua thời gian chuẩn bị, lần xem 4 ảnh đầu và QC. Hai lượt đo khác phạm vi nên chưa tính được mức tiết kiệm thời gian.
 
-Đánh giá tạm thời của AI: pre-label hữu ích để tạo ứng viên, nhưng chưa chứng minh tiết kiệm tổng thời gian ở chất lượng đạt chuẩn. Recall gold 54% và QC còn lỗi cao yêu cầu kiểm lại. Học viên cần tự xác nhận kết luận.
+Theo kết quả Codex tổng hợp, pre-label giúp có sẵn box để chỉnh. Tuy nhiên, model chỉ tìm được 34/63 đối tượng trên bộ gold. Muốn biết có tiết kiệm thời gian hay không, cần đo trọn một lượt review đến khi đạt yêu cầu QC.
 
-Ba quy tắc đề xuất để học viên xác nhận:
+Từ các lỗi ở lượt review đầu, Codex đề xuất ba bước kiểm tra.
 
 1. Xem ảnh gốc không nhãn ở 24/24 ảnh trước khi đối chiếu proposal; ghi audit từng ảnh.
 2. Kiểm đủ bốn cạnh mỗi box ở mức zoom phù hợp, đặc biệt img_004, img_014, img_034.
@@ -84,7 +84,7 @@ Guideline 4.2 xác định phần nhìn thấy, bóng đổ và người riêng.
 
 ## 6. Calibration
 
-Có **6 quyết định** tại qc/calibration_decisions.csv, gồm cau_hoi_mo, loi_may, bay_lot và can_review. Codex đề xuất, chờ học viên xác nhận. Quy tắc ở guidelines/guideline_v1.1_calibrated.md.
+Codex ghi 6 quyết định vào [bảng calibration](qc/calibration_decisions.csv), gồm câu hỏi về cách gán nhãn, lỗi model, bẫy lọt và các box còn phân vân. Các ca có quy tắc bổ sung được ghi trong [guideline v1.1](guidelines/guideline_v1.1_calibrated.md).
 
 CAL-01 làm rõ hàng; CAL-03 kính/khoảng hở; CAL-04 confidence. CAL-02 và CAL-05 củng cố quy tắc có sẵn, không biến lỗi model/reviewer thành định nghĩa lớp mới. CAL-06 giữ mở phạm vi xe đẩy/số bánh. Hai nhóm chưa chốt: xe điện và xe đẩy khi không thấy rõ số bánh.
 
@@ -112,12 +112,12 @@ Cần người kiểm chốt xe điện/xe đẩy; sửa lỗi QC và bẫy lỏ
 
 ## 8. Nguồn gốc thực hiện và ghi chú
 
-- **Bùi Văn Thắng** tự gán box trên 4 ảnh gold trong CVAT, xuất nhãn và chạy `validate_labels.py --all`. Sau khi kiểm tra các cảnh báo về box thấp hơn 20 px, bộ gold cuối có 65 đối tượng và qua bước kiểm tra. Học viên cũng chạy thử YOLO26 trên tập pilot ở ngưỡng 0.25 và 0.5, cung cấp traceback khi PyTorch gặp lỗi và trực tiếp nạp `pre_traps_import.coco.json` vào task 12 để bắt đầu review batch.
-- **Codex** xử lý lỗi môi trường, chạy các lượt suy luận đã ghi log, chọn prompt và khảo sát ngưỡng theo lớp. Sau khi học viên nạp pre-label, Codex kiểm tra và chỉnh box trên 24 ảnh, cập nhật task 12, xuất bộ nhãn đã review, thực hiện QC và soạn bản thảo báo cáo cùng phần bổ sung guideline. Các nhận xét và quyết định HOLD đang chờ học viên tự đánh giá. [Nhật ký chỉnh nhãn từng ảnh](qc/ai_review_audit.csv)
-- **Thời gian:** gold 22 phút do học viên ghi; batch 6.87 phút là đoạn AI review đo thực, không phải thời gian người, không gồm setup/lần xem 4 ảnh đầu/QC. Không so sánh tốc độ trực tiếp.
+- Tôi tự gán box cho 4 ảnh gold trong CVAT, xuất file rồi chạy `validate_labels.py --all`. Khi script báo có box thấp hơn 20 px, tôi kiểm tra lại theo guideline. Bản gold cuối có 65 đối tượng và qua kiểm tra.
+- Tôi chạy thử YOLO26 trên tập pilot ở hai ngưỡng 0.25 và 0.5. Cả hai lần đều gặp lỗi khi nạp PyTorch. Sau khi có file pre-label, tôi nạp `pre_traps_import.coco.json` vào task 12 trên CVAT.
+- Tôi dùng Codex để sửa môi trường và chạy các thí nghiệm, gồm chọn prompt và thử ngưỡng theo lớp. Codex review 24 ảnh, cập nhật và xuất nhãn từ CVAT, làm QC rồi soạn bản thảo báo cáo và guideline. [Nhật ký review từng ảnh](qc/ai_review_audit.csv)
 - **Máy:** Windows, Python 3.12.6, RTX 3050 Ti 4 GB; torch 2.15.0+cpu nên chạy CPU; CVAT Docker 2.80.1. Không dùng SAM 3.
 - **Cache:** không dùng data/cache/; model chạy thật có log. Không sửa ảnh/split.
 - **Sửa script:** common.pick_device từng nuốt lỗi torch rồi trả CPU, dẫn tới import lần hai gây hiểu nhầm. Đã giữ traceback gốc. Thiếu VCRUNTIME140_THREADS.dll được khắc phục bằng Microsoft Visual C++ Runtime chính thức.
 - **CVAT:** snapshot trước sửa được giữ trong work/review_ai; đồng bộ qua annotation service của CVAT Docker và export bằng exporter COCO của CVAT. Source của shape có thể ghi manual theo API; không dùng trường đó để khẳng định con người đã review.
-- **Bài cá nhân:** phần Codex thực hiện vượt phạm vi hỗ trợ AI mà RULES.md mô tả. Hồ sơ này là thực hành có AI hỗ trợ, không được trình bày như toàn bộ do học viên tự làm. Cần học viên xem lại và làm theo yêu cầu giảng viên trước khi nộp.
+- Phần phân tích số đo, đề xuất HOLD và các quy tắc bổ sung do Codex soạn. Mức sử dụng này vượt phạm vi hỗ trợ AI trong [quy định bài cá nhân](../RULES.md).
 - **Lần sau:** tách giờ setup/inference/review/QC; kiểm độc lập; ưu tiên biên box và giữ số đo vòng đầu.

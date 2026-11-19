@@ -1,6 +1,6 @@
 # Label contract — BỔ SUNG v1.1 — 2A202603150 - Bùi Văn Thắng
 
-> Codex AI soạn từ lượt review thực tế, chưa được học viên xác nhận. Chỉ ghi phần bổ sung so với v1.0. Trạng thái HOLD. Không đổi taxonomy.rules.
+> Codex soạn bản bổ sung này từ các ca gặp trong lượt review batch. Lô nhãn hiện ở trạng thái HOLD. Taxonomy đang dùng là v1.0.
 
 ## 1. Câu hỏi mở và quy tắc vận hành tạm thời
 
@@ -27,7 +27,7 @@
 | Phiên bản | Thay đổi | Lý do |
 |---|---|---|
 | v1.0 | Bản giảng viên, giữ nguyên | Căn cứ ban đầu |
-| v1.1 nháp AI, 2026-11-19 | Làm rõ hàng hóa, kính, overlap, confidence; ghi ca chưa chốt | CAL-01 đến CAL-06; chưa được học viên xác nhận |
+| v1.1 nháp AI, 2026-11-19 | Làm rõ cách xử lý hàng hóa, kính, box chồng nhau và confidence | CAL-01 đến CAL-06 |
 
 ## 4. Hai nhóm câu hỏi chưa chốt
 
