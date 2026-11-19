@@ -5,7 +5,7 @@
 - Lớp: L2A (theo tên repo; cần học viên xác nhận)
 - Tài khoản GitHub: BuiVanThang04
 - Repo bài nộp: https://github.com/BuiVanThang04/K5-L2A-DAY08-BuiVanThang-2A202603150-AI-Assisted-Labeling
-- Commit chốt bài (hash): chưa chốt để nộp; xem git log sau khi học viên xác nhận báo cáo
+- Commit chốt bài (hash): 90a4fee831549c04ac6b43e51ddb45bb012a7fc0 (mốc đầy đủ artifact; commit sau chỉ cập nhật trường hash này; chưa được học viên xác nhận để nộp)
 - Máy: Windows, RTX 3050 Ti Laptop GPU 4 GB; inference dùng CPU vì torch 2.15.0+cpu
 - CVAT Docker: 2.80.1, Project day08-2A202603150, task batch-review #12
 
