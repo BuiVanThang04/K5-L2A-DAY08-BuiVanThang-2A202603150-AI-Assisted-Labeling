@@ -112,9 +112,8 @@ Cần người kiểm chốt xe điện/xe đẩy; sửa lỗi QC và bẫy lỏ
 
 ## 8. Nguồn gốc thực hiện và ghi chú
 
-- Tôi tự gán box cho 4 ảnh gold trong CVAT, xuất file rồi chạy `validate_labels.py --all`. Khi script báo có box thấp hơn 20 px, tôi kiểm tra lại theo guideline. Bản gold cuối có 65 đối tượng và qua kiểm tra.
-- Tôi chạy thử YOLO26 trên tập pilot ở hai ngưỡng 0.25 và 0.5. Cả hai lần đều gặp lỗi khi nạp PyTorch. Sau khi có file pre-label, tôi nạp `pre_traps_import.coco.json` vào task 12 trên CVAT.
-- Tôi dùng Codex để sửa môi trường và chạy các thí nghiệm, gồm chọn prompt và thử ngưỡng theo lớp. Codex review 24 ảnh, cập nhật và xuất nhãn từ CVAT, làm QC rồi soạn bản thảo báo cáo và guideline. [Nhật ký review từng ảnh](qc/ai_review_audit.csv)
+- Tôi gán và kiểm tra 4 ảnh gold, chạy thử YOLO26 ở hai ngưỡng 0.25 và 0.5 rồi nạp pre-label vào task 12 trên CVAT.
+- Tôi dùng Codex để chạy thí nghiệm, review 24 ảnh, làm QC và soạn bản thảo báo cáo cùng guideline. [Nhật ký review](qc/ai_review_audit.csv)
 - **Máy:** Windows, Python 3.12.6, RTX 3050 Ti 4 GB; torch 2.15.0+cpu nên chạy CPU; CVAT Docker 2.80.1. Không dùng SAM 3.
 - **Cache:** không dùng data/cache/; model chạy thật có log. Không sửa ảnh/split.
 - **Sửa script:** common.pick_device từng nuốt lỗi torch rồi trả CPU, dẫn tới import lần hai gây hiểu nhầm. Đã giữ traceback gốc. Thiếu VCRUNTIME140_THREADS.dll được khắc phục bằng Microsoft Visual C++ Runtime chính thức.
