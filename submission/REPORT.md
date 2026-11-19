@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603150 - Bùi Văn Thắng
 
-> **Bản do Codex AI thực hiện và soạn, chờ học viên xác nhận.** Gold do học viên gán. Lượt review, QC và các đánh giá dưới đây do Codex thực hiện, không phải lời tự đánh giá đã được học viên xác nhận. Trạng thái: **HOLD**; chưa dùng lô nhãn để huấn luyện.
+> Bùi Văn Thắng tự gán và xuất bộ gold, chạy kiểm tra nhãn và nạp pre-label cho batch vào CVAT. Codex thực hiện lượt review batch, QC và soạn bản phân tích. Quyết định đề xuất cho lô nhãn là **HOLD**.
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -112,8 +112,8 @@ Cần người kiểm chốt xe điện/xe đẩy; sửa lỗi QC và bẫy lỏ
 
 ## 8. Nguồn gốc thực hiện và ghi chú
 
-- **AI:** Codex hỗ trợ môi trường, chạy model, chọn prompt, sweep ngưỡng, review trực quan 24 ảnh, cập nhật CVAT task 12, export, QC và soạn báo cáo/guideline. Audit tại qc/ai_review_audit.csv. Nội dung chưa được học viên xác nhận.
-- **Gold:** học viên tự gán/export trước all-image inference; bản cuối 4 ảnh, 65 annotation, validate không cảnh báo. Theo lịch sử không có bằng chứng xem pre-label gold trước khi xong; vẫn cần học viên xác nhận cá nhân.
+- **Bùi Văn Thắng** tự gán box trên 4 ảnh gold trong CVAT, xuất nhãn và chạy `validate_labels.py --all`. Sau khi kiểm tra các cảnh báo về box thấp hơn 20 px, bộ gold cuối có 65 đối tượng và qua bước kiểm tra. Học viên cũng chạy thử YOLO26 trên tập pilot ở ngưỡng 0.25 và 0.5, cung cấp traceback khi PyTorch gặp lỗi và trực tiếp nạp `pre_traps_import.coco.json` vào task 12 để bắt đầu review batch.
+- **Codex** xử lý lỗi môi trường, chạy các lượt suy luận đã ghi log, chọn prompt và khảo sát ngưỡng theo lớp. Sau khi học viên nạp pre-label, Codex kiểm tra và chỉnh box trên 24 ảnh, cập nhật task 12, xuất bộ nhãn đã review, thực hiện QC và soạn bản thảo báo cáo cùng phần bổ sung guideline. Các nhận xét và quyết định HOLD đang chờ học viên tự đánh giá. [Nhật ký chỉnh nhãn từng ảnh](qc/ai_review_audit.csv)
 - **Thời gian:** gold 22 phút do học viên ghi; batch 6.87 phút là đoạn AI review đo thực, không phải thời gian người, không gồm setup/lần xem 4 ảnh đầu/QC. Không so sánh tốc độ trực tiếp.
 - **Máy:** Windows, Python 3.12.6, RTX 3050 Ti 4 GB; torch 2.15.0+cpu nên chạy CPU; CVAT Docker 2.80.1. Không dùng SAM 3.
 - **Cache:** không dùng data/cache/; model chạy thật có log. Không sửa ảnh/split.

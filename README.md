@@ -4,14 +4,15 @@
 
 # Day 08 Lab — 2A202603150 - Bùi Văn Thắng
 
-> **Trạng thái hồ sơ: HOLD.** Gold do học viên gán; review batch, QC và báo cáo có Codex AI thực hiện. Chưa được học viên xác nhận; xem [báo cáo và nguồn gốc thực hiện](submission/REPORT.md).
+> **Lô nhãn đang ở trạng thái HOLD.** Bùi Văn Thắng tự gán và xuất bộ gold, chạy kiểm tra nhãn và nạp pre-label vào CVAT. Codex thực hiện review batch, QC và soạn bản thảo báo cáo. [Phân công và kết quả](submission/REPORT.md)
 
 
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
   <img alt="thời lượng" src="https://img.shields.io/badge/thời%20lượng-4%20giờ-ff8a3d">
   <img alt="ảnh" src="https://img.shields.io/badge/dữ%20liệu-36%20ảnh-12b3a8">
-  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
+  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
+
   <img alt="gpu" src="https://img.shields.io/badge/GPU-không%20bắt%20buộc-2fbf71">
   <a href="https://colab.research.google.com/github/VinUni-AI20k/K5-L23-Day08-AI-Assisted-Labeling/blob/main/notebooks/day08_colab.ipynb"><img alt="Mở trong Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 </p>

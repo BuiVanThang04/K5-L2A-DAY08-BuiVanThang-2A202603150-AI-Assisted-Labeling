@@ -5,7 +5,7 @@
 - Lớp: L2A (theo tên repo; cần học viên xác nhận)
 - Tài khoản GitHub: BuiVanThang04
 - Repo bài nộp: https://github.com/BuiVanThang04/K5-L2A-DAY08-BuiVanThang-2A202603150-AI-Assisted-Labeling
-- Commit chốt bài (hash): 90a4fee831549c04ac6b43e51ddb45bb012a7fc0 (mốc đầy đủ artifact; commit sau chỉ cập nhật trường hash này; chưa được học viên xác nhận để nộp)
+- Mốc commit chứa đầy đủ sản phẩm thực hành: `90a4fee831549c04ac6b43e51ddb45bb012a7fc0`. Các cập nhật sau mốc này được ghi trong lịch sử Git.
 - Máy: Windows, RTX 3050 Ti Laptop GPU 4 GB; inference dùng CPU vì torch 2.15.0+cpu
 - CVAT Docker: 2.80.1, Project day08-2A202603150, task batch-review #12
 
@@ -20,4 +20,4 @@
 
 ## Nguồn gốc thực hiện
 
-Gold do học viên gán; Codex chạy model, review batch, đồng bộ CVAT, QC và soạn báo cáo/guideline theo yêu cầu làm thay. Các nhận xét và kết luận là của AI, cần học viên xác nhận. Hồ sơ không được trình bày như toàn bộ do học viên tự thực hành; xem submission/REPORT.md mục 8.
+Bùi Văn Thắng tự gán và xuất 4 ảnh gold, ghi thời gian, chạy kiểm tra nhãn, chạy thử YOLO26 trên tập pilot và nạp pre-label vào CVAT task 12. Codex xử lý lỗi PyTorch, chạy các thí nghiệm đã ghi log, review 24 ảnh batch, thực hiện QC và soạn bản thảo báo cáo cùng guideline. Phân tích số đo và quyết định HOLD trong bản thảo do Codex đề xuất. [Chi tiết ở mục 8](submission/REPORT.md)
