@@ -1,0 +1,10 @@
+image,object_id,error_type,reviewer,note
+img_003.jpg,17,sai_vi_tri_kich_thuoc,Codex AI,Adult in the cargo tricycle has visible torso below the box; lower edge needs independent correction.
+img_006.jpg,67,sai_vi_tri_kich_thuoc,Codex AI,Added parked-motorcycle box spans parts of adjacent vehicles; individual boundaries are not tight.
+img_008.jpg,70,sai_thuoc_tinh,Codex AI,"Cart wheel-count ambiguity also affects this cart, but can_review was not set."
+img_009.jpg,,khong,Codex AI,No additional definite error identified at inspected resolution under the provisional cargo rule; not an independent human pass.
+img_010.jpg,93,thua,Codex AI,Added narrow person proposal overlaps the already annotated rider; distinct person is not sufficiently supported.
+img_010.jpg,91,sai_vi_tri_kich_thuoc,Codex AI,Distant cyclo box combines parts of neighboring roof structures; requires instance-level correction.
+img_018.jpg,163,sai_lop,Codex AI,Red-shirt distant rider appears to ride a motorbike; added bicycle label needs correction.
+img_021.jpg,,khong,Codex AI,No additional definite error identified at inspected resolution; dense rear traffic remains a limitation.
+img_035.jpg,413,sai_vi_tri_kich_thuoc,Codex AI,Seated person box is too small and clips visible body extent.

@@ -1,1 +1,3 @@
 step,images,minutes,note
+gold_manual,4,22,Manual annotation and correction of four gold images
+batch_review,24,6.87,Codex AI review and CVAT synchronization; timed segment only; setup and initial four-image inspection excluded; not student review time
